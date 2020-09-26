@@ -1,0 +1,8 @@
+[color]
+    ui = auto
+[core]
+	editor = nvim
+[push]
+	default = simple
+[alias]
+	lg = log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
