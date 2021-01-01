@@ -1,5 +1,10 @@
 # set environment variables here
 
 PATH=$HOME/bin:$PATH
+PATH=$PATH:$HOME/deps/emacs/nextstep/Emacs.app/Contents/MacOS
+PATH=$PATH:$HOME/.emacs.d/bin
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/Library/Python/3.9/bin
+PATH=/usr/local/opt/ruby/bin:$PATH
 
 export PATH
