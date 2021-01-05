@@ -39,6 +39,12 @@
         helpful
         general
         crux
+        elixir-mode
+        exec-path-from-shell
+        alchemist
+        projectile
+        use-package
+        counsel-projectile
         ))
 
 ;; execute all of your package autoloads (among other things)
@@ -261,3 +267,29 @@
   "x"  '(:ignore t :which-key "misc")
   "xm" '(counsel-M-x :which-key "M-x")
   )
+
+;; set up PATH
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+(when (daemonp)
+  (exec-path-from-shell-initialize))
+
+;; alchemist (elixir integration)
+(require 'alchemist)
+
+;; Projectile
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :init
+  (ewh/leader-keys
+   "p" '(:keymap projectile-command-map :package projectile :which-key "projectile"))
+  ;; NOTE: Set this to the folder where you keep your projects
+  (when (file-directory-p "~/dev")
+    (setq projectile-project-search-path '("~/dev")))
+  ; load dired first thing upon switching projects
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
