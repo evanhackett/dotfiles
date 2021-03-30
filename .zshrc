@@ -1,3 +1,6 @@
+# uncomment this to enable profiling. You will also need to uncomment "zprof" at the bottom of the file
+#zmodload zsh/zprof
+
 # .profile sets up environment settings
 source ~/.profile
 
@@ -6,7 +9,7 @@ export ZSH="/Users/evan/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git nvm fd emacs zsh-history-substring-search aws)
+plugins=(git fd emacs zsh-history-substring-search aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,6 +26,7 @@ alias scratch="vim ~/Dropbox/notes/scratch.txt"
 #alias emacs="~/deps/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs"
 alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_GM.sf2"
 alias cdcg="cd ~/dev/cg"
+alias py="python3"
 
 # git for dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -41,13 +45,26 @@ alias tree="l --tree"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # for aws autocompletion to work
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
+
+# Install zsh-async if it’s not present
+if [[ ! -a ~/.zsh-async ]]; then
+  git clone git@github.com:mafredri/zsh-async.git ~/.zsh-async
+fi
+source ~/.zsh-async/async.zsh
+
+export NVM_DIR="$HOME/.nvm"
+function load_nvm() {
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+}
+
+# Initialize async worker for loading nvm
+async_start_worker nvm_worker -n
+async_register_callback nvm_worker load_nvm
+async_job nvm_worker sleep 0.1
 
 # automatically added by ghcup
 [ -f "/Users/evan/.ghcup/env" ] && source "/Users/evan/.ghcup/env" # ghcup-env
@@ -71,3 +88,6 @@ unset __conda_setup
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# Uncomment this (along with the corresponding line at the top of the file) to enable profiling
+#zprof
