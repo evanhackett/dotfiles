@@ -7,14 +7,15 @@
 ;; also set priority. Mainly to prefer Melpa Stable over Melpa.
 (setq package-archives
       '(("gnu"          . "http://elpa.gnu.org/packages/")
-	("marmalade"    . "http://marmalade-repo.org/packages/")
-	("melpa"        . "http://melpa.milkbox.net/packages/")
-	("melpa-stable" . "http://stable.melpa.org/packages/"))
+        ("marmalade"    . "http://marmalade-repo.org/packages/")
+        ("melpa"        . "http://melpa.milkbox.net/packages/")
+        ("melpa-stable" . "http://stable.melpa.org/packages/")
+        ("org"          . "https://orgmode.org/elpa/"))
       package-archive-priorities
       '(("melpa-stable" . 10)
-	("gnu"          . 5)
-	("marmalade"    . 3)
-	("melpa"        . 0)))
+	    ("gnu"          . 5)
+	    ("marmalade"    . 3)
+	    ("melpa"        . 0)))
 
 ;; Hack for using a different set of repositories when ELPA is down
 ;; As soon as MELPA is back up again, comment out the section again.
@@ -252,10 +253,12 @@
   "hk" '(helpful-key :which-key "describe key")
   "hf" '(counsel-describe-function :which-key "describe function")
   "hv" '(counsel-describe-variable :which-key "describe variable")
+  "ha" '(counsel-apropos :which-key "apropos")
 
   ; eval
   "e"  '(:ignore t :which-key "eval")
   "eb" '(eval-buffer :which-key "eval buffer")
+  "er" '(eval-region :which-key "eval region")
 
   ; shell
   "s"  '(:ignore t :which-key "shell")
@@ -264,8 +267,9 @@
   "st" '(term :which-key "open terminal emulator")
 
   ; misc
-  "x"  '(:ignore t :which-key "misc")
-  "xm" '(counsel-M-x :which-key "M-x")
+  "m"  '(:ignore t :which-key "misc")
+  "mx" '(counsel-M-x :which-key "M-x")
+  "mq" '(fill-paragraph :which-key "fill-paragraph")
   )
 
 ;; set up PATH
@@ -293,3 +297,5 @@
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
+
+(use-package org)
