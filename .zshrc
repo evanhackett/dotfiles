@@ -9,7 +9,7 @@ export ZSH="/Users/evan/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git fd emacs zsh-history-substring-search aws)
+plugins=(git fd emacs zsh-history-substring-search aws zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,6 +44,9 @@ alias ldot="lx -d .*"
 alias tree="l --tree"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# return to normal mode by pressing "fd" while in insert mode
+ZVM_VI_INSERT_ESCAPE_BINDKEY=fd
 
 # for aws autocompletion to work
 autoload bashcompinit && bashcompinit
@@ -89,5 +92,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/evan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
 # Uncomment this (along with the corresponding line at the top of the file) to enable profiling
 #zprof
+
+
