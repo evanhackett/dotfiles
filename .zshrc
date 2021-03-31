@@ -9,7 +9,7 @@ export ZSH="/Users/evan/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git fd emacs zsh-history-substring-search aws zsh-vi-mode)
+plugins=(git fd emacs zsh-history-substring-search aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,8 +45,9 @@ alias tree="l --tree"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# return to normal mode by pressing "fd" while in insert mode
-ZVM_VI_INSERT_ESCAPE_BINDKEY=fd
+autoload -U edit-command-line
+zle -N edit-command-line 
+bindkey '^e' edit-command-line
 
 # for aws autocompletion to work
 autoload bashcompinit && bashcompinit
