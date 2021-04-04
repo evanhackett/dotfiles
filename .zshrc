@@ -28,6 +28,9 @@ alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_G
 alias cdcg="cd ~/dev/cg"
 alias py="python3"
 
+# download audio of a youtube video/playlist, outputting to a given output dir
+alias download-audio="~/scripts/youtube-dl-private-playlist/download-audio.sh"
+
 # git for dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -45,6 +48,7 @@ alias tree="l --tree"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# edit the current line with vim by pressing ctrl-e
 autoload -U edit-command-line
 zle -N edit-command-line 
 bindkey '^e' edit-command-line
