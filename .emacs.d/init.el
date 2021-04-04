@@ -46,6 +46,8 @@
         projectile
         use-package
         counsel-projectile
+        treemacs
+        treemacs-evil
         ))
 
 ;; execute all of your package autoloads (among other things)
@@ -225,6 +227,7 @@
   "ff" '(counsel-find-file :which-key "find file")
   "fi" '(crux-find-user-init-file :which-key "open emacs init file")
   "fr" '(crux-rename-file-and-buffer :which-key "Rename the current buffer and its visiting file if any")
+  "ft" '(treemacs :which-key "Toggle tree view for files")
 
   ; buffers
   "b"  '(:ignore t :which-key "buffers")
@@ -299,3 +302,9 @@
   :config (counsel-projectile-mode))
 
 (use-package org)
+
+(use-package treemacs
+  :ensure t)
+
+(use-package treemacs-evil
+  :ensure t)
