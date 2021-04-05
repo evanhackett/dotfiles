@@ -226,8 +226,9 @@
   "f"  '(:ignore t :which-key "files")
   "ff" '(counsel-find-file :which-key "find file")
   "fi" '(crux-find-user-init-file :which-key "open emacs init file")
-  "fr" '(crux-rename-file-and-buffer :which-key "Rename the current buffer and its visiting file if any")
+  "fn" '(crux-rename-file-and-buffer :which-key "Rename the current buffer and its visiting file if any")
   "ft" '(treemacs :which-key "Toggle tree view for files")
+  "fr" '(recentf-open-files :which-key "Find recently opened files")
 
   ; buffers
   "b"  '(:ignore t :which-key "buffers")
@@ -308,3 +309,7 @@
 
 (use-package treemacs-evil
   :ensure t)
+
+; find recently opened files
+(require 'recentf)
+(recentf-mode 1)
