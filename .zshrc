@@ -9,6 +9,9 @@ export ZSH="/Users/evan/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
+# disabling aws prompt because starship prompt will show it, and I don't need it shown twice
+SHOW_AWS_PROMPT=false
+
 plugins=(git fd emacs zsh-history-substring-search aws)
 
 source $ZSH/oh-my-zsh.sh
@@ -45,6 +48,10 @@ alias ll="lx --links"
 alias lafg="lx -a --grid"
 alias ldot="lx -d .*"
 alias tree="l --tree"
+
+# switch starship configs
+alias starship-aws="export STARSHIP_CONFIG=~/.config/starship_aws.toml"
+alias starship-default="export STARSHIP_CONFIG=~/.config/starship.toml"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -114,6 +121,10 @@ lfcd () {
         fi
     fi
 }
+
+# starship prompt
+eval "$(starship init zsh)"
+
 
 # Uncomment this (along with the corresponding line at the top of the file) to enable profiling
 #zprof
