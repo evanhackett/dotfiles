@@ -48,6 +48,8 @@
         counsel-projectile
         treemacs
         treemacs-evil
+        js2-mode
+        json-mode
         ))
 
 ;; execute all of your package autoloads (among other things)
@@ -76,6 +78,10 @@
 
 ;; set default tab char's display width to 4 spaces
 (setq-default tab-width 4)
+
+;; indent level for languages
+(setq js-indent-level 2)
+(setq json-reformat:indent-width 2)
 
 ;; show cursor position within line
 (column-number-mode 1)
