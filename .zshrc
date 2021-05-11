@@ -9,6 +9,9 @@ export ZSH="/Users/evan/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
+HISTSIZE=10000000 # maximum number of lines that are kept in a session
+SAVEHIST=10000000 # maximum number of lines that are kept in the history file
+
 # disabling aws prompt because starship prompt will show it, and I don't need it shown twice
 SHOW_AWS_PROMPT=false
 
@@ -29,6 +32,7 @@ alias scratch="vim ~/Dropbox/notes/scratch.txt"
 alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_GM.sf2"
 alias cdcg="cd ~/dev/cg"
 alias py="python3"
+
 
 # download audio of a youtube video/playlist, outputting to a given output dir
 alias download-audio="~/scripts/youtube-dl-private-playlist/download-audio.sh"
@@ -51,6 +55,11 @@ alias tree="l --tree"
 # switch starship configs
 alias starship-aws="export STARSHIP_CONFIG=~/.config/starship_aws.toml"
 alias starship-default="export STARSHIP_CONFIG=~/.config/starship.toml"
+
+# fuzzy search history
+# awk and cut remove first column (was tricky due to the column format). sort and uniq remove duplicate noise, fzf for searching.
+search_history(){ history | awk '{$1= ""; print $0}' | cut -c 2- | sort | uniq | fzf }
+
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
