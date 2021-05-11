@@ -215,6 +215,20 @@
 ;; crux
 (require 'crux)
 
+(defun switch-buffer-scratch ()
+  "Switch to the scratch buffer. If the buffer doesn't exist,
+create it and write the initial message into it."
+  (interactive)
+  (let* ((scratch-buffer-name "*scratch*")
+         (scratch-buffer (get-buffer scratch-buffer-name)))
+    (unless scratch-buffer
+      (setq scratch-buffer (get-buffer-create scratch-buffer-name))
+      (with-current-buffer scratch-buffer
+        (lisp-interaction-mode)
+        (insert initial-scratch-message)))
+    (switch-to-buffer scratch-buffer)))
+
+
 ;; General (leader-key bindings)
 (require 'general)
 (general-def :states '(normal motion) "SPC" nil) ; have to unbind space first before we can use it as a prefix key
@@ -226,7 +240,8 @@
 (ewh/leader-keys
   ; toggles
   "t"  '(:ignore t :which-key "toggles")
-  "tt" '(counsel-load-theme :which-key "choose theme")
+  "th" '(counsel-load-theme :which-key "choose theme")
+  "tt" '(treemacs :which-key "Toggle tree view for files")
 
   ; files
   "f"  '(:ignore t :which-key "files")
@@ -245,6 +260,8 @@
   "bx" '(kill-current-buffer :which-key "kill current buffer")
   "ba" '(crux-kill-other-buffers :which-key "kill all other buffers")
   "bl" '(list-buffers :which-key "list buffers")
+  "br" '(revert-buffer :which-key "revert buffer")
+  "bc" '(switch-buffer-scratch :which-key "switch to scratch buffer")
 
   ; windows
   "w"  '(:ignore t :which-key "windows")
@@ -254,7 +271,7 @@
   "wl" '(evil-window-right :which-key "window right")
   "ws" '(evil-window-split :which-key "split window")
   "wv" '(evil-window-vsplit :which-key "vertical split window")
-  "wq" '(evil-quit :which-key "quit window")
+  "wx" '(evil-quit :which-key "close window")
   "wo" '(delete-other-windows :which-key "delete other windows")
 
 
@@ -269,6 +286,9 @@
   "e"  '(:ignore t :which-key "eval")
   "eb" '(eval-buffer :which-key "eval buffer")
   "er" '(eval-region :which-key "eval region")
+  "ee" '(eval-expression :which-key "eval expression")
+  "el" '(eval-last-sexp :which-key "eval last sexp before point")
+  "ef" '(eval-defun :which-key "eval defun (top-level form containing point, or after point)")
 
   ; shell
   "s"  '(:ignore t :which-key "shell")
@@ -319,3 +339,53 @@
 ; find recently opened files
 (require 'recentf)
 (recentf-mode 1)
+
+; Language Server Protocol
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  :config
+  (lsp-enable-which-key-integration t))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
+(use-package lsp-treemacs
+  :after lsp)
+
+(use-package lsp-ivy)
+
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
+
+(use-package elm-mode
+  :mode "\\.elm\\'"
+  :hook ((elm-mode . lsp-deferred)
+         (elm-mode . elm-format-on-save-mode))) ;format on save doesn't seem to work. Need to figure this out. For now calling elm-format manually works though.
+  
+
+
+
+
+
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(typescript-mode lsp-ivy lsp-treemacs lsp-ui lsp-mode which-key evil evil-collection dracula-theme rainbow-delimiters counsel ivy-rich helpful general crux elixir-mode exec-path-from-shell alchemist projectile use-package counsel-projectile treemacs treemacs-evil js2-mode json-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
