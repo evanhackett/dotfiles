@@ -15,7 +15,7 @@ SAVEHIST=10000000 # maximum number of lines that are kept in the history file
 # disabling aws prompt because starship prompt will show it, and I don't need it shown twice
 SHOW_AWS_PROMPT=false
 
-plugins=(git fd emacs zsh-history-substring-search aws)
+plugins=(git fd emacs zsh-history-substring-search aws fasd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,6 +58,7 @@ alias starship-default="export STARSHIP_CONFIG=~/.config/starship.toml"
 
 # fuzzy search history
 # awk and cut remove first column (was tricky due to the column format). sort and uniq remove duplicate noise, fzf for searching.
+# Update: although this is cool, pressing Ctrl+R does the same thing but even better because it will replace your prompt with the selection instead of printing it out.
 search_history(){ history | awk '{$1= ""; print $0}' | cut -c 2- | sort | uniq | fzf }
 
 
