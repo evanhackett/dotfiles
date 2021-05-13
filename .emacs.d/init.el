@@ -8,14 +8,12 @@
 ;; also set priority. Mainly to prefer Melpa Stable over Melpa.
 (setq package-archives
       '(("gnu"          . "http://elpa.gnu.org/packages/")
-        ("marmalade"    . "http://marmalade-repo.org/packages/")
         ("melpa"        . "http://melpa.milkbox.net/packages/")
         ("melpa-stable" . "http://stable.melpa.org/packages/")
         ("org"          . "https://orgmode.org/elpa/"))
       package-archive-priorities
       '(("melpa-stable" . 10)
 	    ("gnu"          . 5)
-	    ("marmalade"    . 3)
 	    ("melpa"        . 0)))
 
 ;; Hack for using a different set of repositories when ELPA is down
@@ -340,6 +338,8 @@ create it and write the initial message into it."
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
+(use-package magit)
+
 (use-package org)
 
 (use-package treemacs
@@ -393,7 +393,7 @@ create it and write the initial message into it."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(typescript-mode lsp-ivy lsp-treemacs lsp-ui lsp-mode which-key evil evil-collection dracula-theme rainbow-delimiters counsel ivy-rich helpful general crux elixir-mode exec-path-from-shell alchemist projectile use-package counsel-projectile treemacs treemacs-evil js2-mode json-mode)))
+   '(vdiff-magit magit typescript-mode lsp-ivy lsp-treemacs lsp-ui lsp-mode which-key evil evil-collection dracula-theme rainbow-delimiters counsel ivy-rich helpful general crux elixir-mode exec-path-from-shell alchemist projectile use-package counsel-projectile treemacs treemacs-evil js2-mode json-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
