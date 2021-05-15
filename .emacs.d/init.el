@@ -257,6 +257,7 @@ create it and write the initial message into it."
     ; files
     "f"  '(:ignore t :which-key "files")
     "ff" '(counsel-find-file :which-key "find file")
+    "fz" '(counsel-fzf :which-key "fuzzy find file")
     "fi" '(crux-find-user-init-file :which-key "open emacs init file")
     "fn" '(crux-rename-file-and-buffer :which-key "Rename the current buffer and its visiting file if any")
     "ft" '(treemacs :which-key "Toggle tree view for files")
@@ -292,6 +293,7 @@ create it and write the initial message into it."
     "hv" '(counsel-describe-variable :which-key "describe variable")
     "ha" '(counsel-apropos :which-key "apropos")
     "hp" '(helpful-at-point :which-key "describe symbol at point")
+    "hm" '(describe-mode :which-key "describe mode")
 
     ; eval
     "e"  '(:ignore t :which-key "eval")
@@ -356,7 +358,10 @@ create it and write the initial message into it."
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
-  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  ;; before setting up the leader key I have to setup the keymap-prefix or else which-key docs won't be available on the prefixes.
+  (setq lsp-keymap-prefix "SPC l")
+  (ewh/leader-keys
+   "l" '(:keymap lsp-command-map :package lsp-mode :which-key "lsp"))
   :config
   (lsp-enable-which-key-integration t))
 
