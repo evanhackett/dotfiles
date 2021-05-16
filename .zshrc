@@ -33,6 +33,11 @@ alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_G
 alias cdcg="cd ~/dev/cg"
 alias py="python3"
 
+# Better defaults
+alias mv="mv -iv"           # -i prompts before overwrite, v shows files that were moved
+alias mkdir="mkdir -p"     # -p make parent dirs as needed
+alias df="df -h"           # -h prints human readable format
+alias rm="rm -iv"
 
 # download audio of a youtube video/playlist, outputting to a given output dir
 alias download-audio="~/scripts/youtube-dl-private-playlist/download-audio.sh"
