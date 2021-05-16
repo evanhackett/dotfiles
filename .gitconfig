@@ -17,4 +17,5 @@
 
 # git mergetool
 [merge]
-	tool = vimdiff
+    tool = vimdiff
+    keepBackup = false
