@@ -1,0 +1,10 @@
+# This is my global gitignore file
+# Although things added here will be ignored, in some cases you might still want to add the item to the project's .gitignore file for the sake of other people who might not have it ignored in their global gitignore.
+
+# git credential file
+.gitconfig.local
+
+node_modules
+
+# Folder view configuration files
+.DS_Store

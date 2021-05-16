@@ -9,6 +9,7 @@
     ui = auto
 [core]
 	editor = nvim
+    excludesfile = ~/.gitignore_global
 [push]
 	default = simple
 [alias]
