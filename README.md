@@ -32,4 +32,6 @@ config commit -m "Add vimrc"
 config push
 ```
 
+## Other stuff
 
+You might also be interested in my [emacs configuration](https://github.com/evanhackett/emacs.d).
