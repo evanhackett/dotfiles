@@ -16,3 +16,6 @@ export EDITOR=/usr/local/bin/nvim
 export FZF_DEFAULT_COMMAND='fd --type f'
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# color theme for bat
+export BAT_THEME="Dracula"
