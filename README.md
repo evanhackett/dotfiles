@@ -7,7 +7,7 @@ There are several advantages to storing your dotfiles with git:
 3. easy way to sync configurations across multiple machines
 4. if a student in one of my classes, a friend, or coworker asks me about my setup I can point them here
 
-Only config files I specifically choose to track will be tracked.
+Only config files I specifically choose to track will be tracked, so there might be a lot of things missing. I'll try to keep things up to date and include my most useful config files.
 
 ## Setup
 
