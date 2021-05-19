@@ -2,7 +2,7 @@
 	name = evanhackett
 	email = evanwhackett@gmail.com
 [credential]
-    helper = store
+	helper = store
 [github]
 	user = evanhackett
 [push]
