@@ -15,7 +15,7 @@ SAVEHIST=10000000 # maximum number of lines that are kept in the history file
 # disabling aws prompt because starship prompt will show it, and I don't need it shown twice
 SHOW_AWS_PROMPT=false
 
-plugins=(git fd emacs zsh-history-substring-search aws fasd)
+plugins=(git fd zsh-history-substring-search aws fasd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 alias mkd="mkdir -pv"
 alias vi="nvim"
 alias vim="nvim"
+alias emacs="emacsclient -c -n"
 alias e="emacs"
 alias srcz="source ~/.zshrc"
 alias edz="vim ~/.zshrc"
