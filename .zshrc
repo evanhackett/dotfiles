@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 alias mkd="mkdir -pv"
 alias vi="nvim"
 alias vim="nvim"
+alias e="emacs"
 alias srcz="source ~/.zshrc"
 alias edz="vim ~/.zshrc"
 alias edv="vim ~/.config/nvim/init.vim"
