@@ -1,44 +1,56 @@
-https://lukesmith.xyz/rss.xml blog
-https://lukesmith.xyz/youtube.xml youtube
-http://third-bit.com/feed.xml blog
-http://blog.ploeh.dk/SyndicationService.asmx/GetRss blog
-https://notamonadtutorial.com/feed blog
-https://eli.thegreenplace.net/feeds/all.atom.xml blog
-http://www.sacrideo.us/rss/ blog
-http://feeds2.feedburner.com/mariusaeriksen blog
-http://jrsinclair.com/web-development/index.rss blog
-https://ferd.ca/feed.rss blog
-http://worrydream.com/feed.xml blog
-http://feeds2.feedburner.com/stevelosh blog
-http://prog21.dadgum.com/atom.xml blog
-http://feeds.feedburner.com/codinghorror/ blog
-http://tinysubversions.com/feed.xml blog
-https://blog.sandstorm.io/feed.xml blog
-https://blog.regehr.org/feed blog
-https://www.sicpers.info/feed/ blog
-http://lambda-the-ultimate.org/rss.xml blog
-https://codewords.recurse.com/feed.xml blog
-http://davidad.github.io/atom.xml blog
-http://neverworkintheory.org/feed blog
-https://steve-yegge.blogspot.com/feeds/posts/default?alt=rss blog
-https://danluu.com/atom.xml blog
-https://aphyr.com/posts.atom blog
-http://www.kalzumeus.com/feed/ blog
-https://vanemden.wordpress.com/feed/ blog
-http://feeds.feedburner.com/ElegantCoding blog
-https://250bpm.com/rss.xml blog
-http://www.dijkstrascry.com/rss.xml blog
-https://swizec.com/rss.xml blog
-http://maxogden.com/rss.xml blog
-https://codewithoutrules.com/atom.xml blog
-https://jvns.ca/atom.xml blog
-http://feeds.feedburner.com/catonmat?format=xml blog
-http://matt.might.net/articles/feed.rss blog
-https://degoes.net/feed.xml blog
-https://medium.com/feed/@drboolean blog
-http://blog.cleancoder.com/atom.xml blog
-https://www.functionalgeekery.com/feed/mp3/ podcast
-https://feeds.soundcloud.com/users/soundcloud:users:239787249/sounds.rss podcast
-http://feeds.feedburner.com/se-radio podcast
-https://www.reddit.com/r/oilshell/.rss blog
-https://landchad.net/rss.xml
+https://levels.io/rss/ blog tech
+https://lukesmith.xyz/rss.xml blog tech
+https://lukesmith.xyz/youtube.xml youtube "~Luke Smith (YouTube)" tech
+http://third-bit.com/feed.xml blog tech
+http://blog.ploeh.dk/SyndicationService.asmx/GetRss blog tech
+https://notamonadtutorial.com/feed blog "~This is not a Monad Tutorial" tech
+https://eli.thegreenplace.net/feeds/all.atom.xml blog tech
+http://www.sacrideo.us/rss/ blog tech
+http://feeds2.feedburner.com/mariusaeriksen blog tech
+http://jrsinclair.com/web-development/index.rss blog tech
+https://ferd.ca/feed.rss blog tech
+http://worrydream.com/feed.xml blog tech
+http://feeds2.feedburner.com/stevelosh blog tech
+http://prog21.dadgum.com/atom.xml blog tech
+http://feeds.feedburner.com/codinghorror/ blog tech
+http://tinysubversions.com/feed.xml blog tech
+https://blog.sandstorm.io/feed.xml blog tech
+https://blog.regehr.org/feed blog tech
+https://www.sicpers.info/feed/ blog tech
+http://lambda-the-ultimate.org/rss.xml blog tech
+https://codewords.recurse.com/feed.xml blog tech
+http://davidad.github.io/atom.xml blog tech
+http://neverworkintheory.org/feed blog tech
+https://steve-yegge.blogspot.com/feeds/posts/default?alt=rss blog tech
+https://danluu.com/atom.xml blog tech
+https://aphyr.com/posts.atom blog tech
+http://www.kalzumeus.com/feed/ blog tech
+https://vanemden.wordpress.com/feed/ blog tech
+http://feeds.feedburner.com/ElegantCoding blog tech
+https://250bpm.com/rss.xml blog tech
+http://www.dijkstrascry.com/rss.xml blog tech
+https://swizec.com/rss.xml blog tech
+http://maxogden.com/rss.xml blog tech
+https://codewithoutrules.com/atom.xml blog tech
+https://jvns.ca/atom.xml blog tech
+http://feeds.feedburner.com/catonmat?format=xml blog tech
+http://matt.might.net/articles/feed.rss blog tech
+https://degoes.net/feed.xml blog tech
+https://medium.com/feed/@drboolean blog tech
+http://blog.cleancoder.com/atom.xml blog tech
+https://www.functionalgeekery.com/feed/mp3/ podcast tech
+https://feeds.soundcloud.com/users/soundcloud:users:239787249/sounds.rss podcast tech
+http://feeds.feedburner.com/se-radio podcast tech
+https://www.reddit.com/r/oilshell/.rss blog tech
+https://landchad.net/rss.xml tech
+https://www.allthingsdistributed.com/index.xml blog tech
+https://research.swtch.com/feed.atom blog "~Russ Cox blog" tech
+https://martinfowler.com/feed.atom blog tech
+https://drewdevault.com/blog/index.xml blog tech
+http://www.norvig.com/rss-feed.xml blog tech
+http://blog.fogus.me/feed/ blog "~Fogus blog" tech
+http://raganwald.com/atom.xml blog tech
+https://maryrosecook.com/blog/feed.xml blog tech
+https://serverlessfirst.com/feed.xml blog tech
+https://thebootstrappedfounder.com/feed/ blog tech
+https://aswathdamodaran.blogspot.com/feeds/posts/default blog finance

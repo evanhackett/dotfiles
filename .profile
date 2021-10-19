@@ -1,6 +1,7 @@
 # set environment variables here
 
 PATH=$HOME/bin:$PATH
+PATH=$PATH:$HOME/.pyenv/shims
 PATH=$PATH:$HOME/deps/emacs/nextstep/Emacs.app/Contents/MacOS
 PATH=$PATH:$HOME/.emacs.d/bin
 PATH=$PATH:$HOME/go/bin

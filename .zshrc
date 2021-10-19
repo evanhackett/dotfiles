@@ -36,6 +36,8 @@ alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_G
 alias cdcg="cd ~/dev/cg"
 alias py="python3"
 alias fzfp="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+alias rss="newsboat"
+alias edrss="vim ~/.newsboat/urls"
 
 # Better defaults
 alias mv="mv -iv"           # -i prompts before overwrite, v shows files that were moved
@@ -118,9 +120,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # pyenv stuff
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(pyenv init --path)"
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/evan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
