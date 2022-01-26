@@ -1,6 +1,6 @@
 [user]
-	name = evanhackett
-	email = evanwhackett@gmail.com
+	name = Evan Hackett
+	email = evan@evanhackett.com
 [credential]
 	helper = store
 [github]
@@ -30,3 +30,8 @@
 [merge]
     tool = vimdiff
     keepBackup = false
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
