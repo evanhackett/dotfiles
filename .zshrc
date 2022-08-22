@@ -1,21 +1,11 @@
 # uncomment this to enable profiling. You will also need to uncomment "zprof" at the bottom of the file
 #zmodload zsh/zprof
 
-# .profile sets up environment settings
-source ~/.profile
+# environment variables are set in .zshenv
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/evan/.oh-my-zsh"
+# aliases, functions, and interactive-only stuff are defined here in .zshrc.
 
-ZSH_THEME="robbyrussell"
-
-HISTSIZE=10000000 # maximum number of lines that are kept in a session
-SAVEHIST=1000000000 # maximum number of lines that are kept in the history file
-
-# disabling aws prompt because starship prompt will show it, and I don't need it shown twice
-SHOW_AWS_PROMPT=false
-
-plugins=(git fd zsh-history-substring-search aws fasd)
+plugins=(git fd fasd ripgrep kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,26 +23,40 @@ alias gds='git diff --staged'
 alias path="print -l $path"
 alias scratch="vim ~/Dropbox/notes/scratch.txt"
 alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_GM.sf2"
-alias cdcg="cd ~/dev/cg"
 alias py="python3"
 alias fzfp="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias rss="newsboat"
 alias edrss="vim ~/.newsboat/urls"
+alias edchain="vim ~/Dropbox/dont-break-the-chain/chain.txt"
+alias ytmp3="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s'"
+alias man="batman" # colorized man pages via bat
 
 # Better defaults
 alias mv="mv -iv"           # -i prompts before overwrite, v shows files that were moved
 alias mkdir="mkdir -p"     # -p make parent dirs as needed
 alias df="df -h"           # -h prints human readable format
-alias rm="rm -iv"
+#alias rm="rm -iv" # commenting this out for now since I prefer grm since it supports -I
+#alias rm="/opt/homebrew/bin/grm -Iv" # commenting this out now as well in favor of safe-rm
+alias rm="safe-rm -iv"
+
+# really though it is better to move to trash and empty trash later
+del () {
+  now="$(date +%Y%m%d_%H%M%S)"
+  mkdir -p /tmp/Trash/$now
+  mv "$@" /tmp/Trash/$now
+}
+
+emptytrash() {
+   rm -rf /tmp/Trash
+   mkdir /tmp/Trash  
+}
+
 
 # download audio of a youtube video/playlist, outputting to a given output dir
 alias download-audio="~/scripts/youtube-dl-private-playlist/download-audio.sh"
 
 # git for dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# steg specific
-alias hours='vim ~/Dropbox/notes/steg/hours.org'
 
 # ls replacement
 alias l="exa"
@@ -67,63 +71,35 @@ alias tree="l --tree"
 alias starship-aws="export STARSHIP_CONFIG=~/.config/starship_aws.toml"
 alias starship-default="export STARSHIP_CONFIG=~/.config/starship.toml"
 
+
+# named directories
+export WONDERLAND=~/dev/croquet/wonderland
+
+# fasd 
+# init
+eval "$(fasd --init auto)"
+alias j='z' # jump to dir
+alias ji='zz' # jump interactive
+alias o="a -e open" # open result of fasd
+
+
+# Global aliases (can be used anywhere in the command line)
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+
 # fuzzy search history
 # awk and cut remove first column (was tricky due to the column format). sort and uniq remove duplicate noise, fzf for searching.
 # Update: although this is cool, pressing Ctrl+R does the same thing but even better because it will replace your prompt with the selection instead of printing it out.
 search_history(){ history | awk '{$1= ""; print $0}' | cut -c 2- | sort | uniq | fzf }
 
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# syntax highlighting https://github.com/zsh-users/zsh-syntax-highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # edit the current line with vim by pressing ctrl-e
 autoload -U edit-command-line
 zle -N edit-command-line 
 bindkey '^e' edit-command-line
-
-# for aws autocompletion to work
-autoload bashcompinit && bashcompinit
-complete -C '/usr/local/bin/aws_completer' aws
-
-# Install zsh-async if it’s not present
-if [[ ! -a ~/.zsh-async ]]; then
-  git clone git@github.com:mafredri/zsh-async.git ~/.zsh-async
-fi
-source ~/.zsh-async/async.zsh
-
-export NVM_DIR="$HOME/.nvm"
-function load_nvm() {
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-}
-
-# Initialize async worker for loading nvm
-async_start_worker nvm_worker -n
-async_register_callback nvm_worker load_nvm
-async_job nvm_worker sleep 0.1
-
-# automatically added by ghcup
-[ -f "/Users/evan/.ghcup/env" ] && source "/Users/evan/.ghcup/env" # ghcup-env
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/evan/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/evan/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/evan/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/evan/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# pyenv stuff
-eval "$(pyenv init --path)"
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/evan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # use lf to change directories
 lfcd () {
@@ -155,9 +131,53 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+# ripgrep-all fzf integration
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
+}
+
+
+# kubernetes and/or croquet work stuff
+# show logs of pods, easily select pod via fzf
+# Usage: pass in a cluster name. Example: podlogs devusor
+podlogs() {
+    CLUSTER=$1
+    POD=$(kubectl $1 get pods | fzf | awk '{ print $1 }')
+    POD_TYPE=$(cut -d- -f1 <<< $POD)
+
+    case $POD_TYPE in
+        reflectors)
+            CONTAINER=reflector
+            ;;
+
+        dispatchers)
+            CONTAINER=dispatcher
+            ;;
+
+        *)
+            CONTAINER=$POD_TYPE
+            ;;
+    esac
+
+    kubectl $CLUSTER logs $POD -c $CONTAINER
+}
+
 # starship prompt
 eval "$(starship init zsh)"
 
+# completions
+# gcloud
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # Uncomment this (along with the corresponding line at the top of the file) to enable profiling
 #zprof
@@ -165,3 +185,7 @@ eval "$(starship init zsh)"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
