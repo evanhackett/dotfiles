@@ -26,7 +26,7 @@ alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_G
 alias py="python3"
 alias fzfp="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias rss="newsboat"
-alias edrss="vim ~/.newsboat/urls"
+alias edrss="vim ~/.config/newsboat/urls"
 alias edchain="vim ~/Dropbox/dont-break-the-chain/chain.txt"
 alias ytmp3="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s'"
 alias man="batman" # colorized man pages via bat
