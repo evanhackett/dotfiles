@@ -14,3 +14,6 @@ bind-key a toggle-article-read
 bind-key n next-unread
 bind-key N prev-unread
 bind-key U show-urls
+
+# custom date format because I wanted to see the year (year is omitted by default)
+datetime-format "%D"
