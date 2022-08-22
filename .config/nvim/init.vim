@@ -34,11 +34,6 @@ autocmd FileType json setlocal tabstop=2
 autocmd FileType html setlocal tabstop=2
 autocmd FileType css setlocal tabstop=2
 
-" colorscheme stuff: https://draculatheme.com/vim
-packadd! dracula
-syntax enable
-colorscheme dracula 
-
 " Vim with default settings does not allow easy switching between multiple files
 " in the same editor window. Users can use multiple split windows or multiple
 " tab pages to edit multiple files, but it is still best to enable an option to
@@ -74,3 +69,18 @@ set visualbell
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
 set t_vb=
+
+
+syntax enable
+
+" plugin stuff
+" https://github.com/junegunn/vim-plug
+call plug#begin(stdpath('data') . '/plugged')
+
+" color scheme
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+" Initialize plugin system
+call plug#end()
+
+colorscheme dracula
