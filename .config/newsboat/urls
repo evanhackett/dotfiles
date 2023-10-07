@@ -1,7 +1,15 @@
+---Favorites---
 https://levels.io/rss/ blog tech
 https://lukesmith.xyz/rss.xml blog tech
-https://lukesmith.xyz/youtube.xml youtube "~Luke Smith (YouTube)" tech
+https://jvns.ca/atom.xml blog tech
 http://third-bit.com/feed.xml blog tech
+http://blog.fogus.me/feed/ blog "~Fogus blog" tech
+https://a-bas-le-ciel.blogspot.com/feeds/posts/default?alt=rss blog
+https://buttondown.email/hillelwayne/rss "~Hillel Wayne" blog tech
+https://feeds.feedburner.com/dubroy "~Patrick Dubroy" blog tech
+https://squeaker.hatenablog.com/rss "~Yoshiki Ohshima" blog tech
+
+---Blogs---
 http://blog.ploeh.dk/SyndicationService.asmx/GetRss blog tech
 https://notamonadtutorial.com/feed blog "~This is not a Monad Tutorial" tech
 https://eli.thegreenplace.net/feeds/all.atom.xml blog tech
@@ -21,7 +29,8 @@ http://lambda-the-ultimate.org/rss.xml blog tech
 https://codewords.recurse.com/feed.xml blog tech
 http://davidad.github.io/atom.xml blog tech
 http://neverworkintheory.org/feed blog tech
-https://steve-yegge.blogspot.com/feeds/posts/default?alt=rss blog tech
+https://steve-yegge.blogspot.com/feeds/posts/default?alt=rss "~Steve Yegge old blog" blog tech
+https://medium.com/feed/@steve-yegge "~Steve Yegge" blog tech
 https://danluu.com/atom.xml blog tech
 https://aphyr.com/posts.atom blog tech
 http://www.kalzumeus.com/feed/ blog tech
@@ -32,15 +41,11 @@ http://www.dijkstrascry.com/rss.xml blog tech
 https://swizec.com/rss.xml blog tech
 http://maxogden.com/rss.xml blog tech
 https://codewithoutrules.com/atom.xml blog tech
-https://jvns.ca/atom.xml blog tech
 http://feeds.feedburner.com/catonmat?format=xml blog tech
 http://matt.might.net/articles/feed.rss blog tech
 https://degoes.net/feed.xml blog tech
 https://medium.com/feed/@drboolean blog tech
 http://blog.cleancoder.com/atom.xml blog tech
-https://www.functionalgeekery.com/feed/mp3/ podcast tech
-https://feeds.soundcloud.com/users/soundcloud:users:239787249/sounds.rss podcast tech
-http://feeds.feedburner.com/se-radio podcast tech
 https://www.reddit.com/r/oilshell/.rss blog tech
 https://landchad.net/rss.xml tech
 https://www.allthingsdistributed.com/index.xml blog tech
@@ -48,20 +53,57 @@ https://research.swtch.com/feed.atom blog "~Russ Cox blog" tech
 https://martinfowler.com/feed.atom blog tech
 https://drewdevault.com/blog/index.xml blog tech
 http://www.norvig.com/rss-feed.xml blog tech
-http://blog.fogus.me/feed/ blog "~Fogus blog" tech
 http://raganwald.com/atom.xml blog tech
 https://maryrosecook.com/blog/feed.xml blog tech
 https://serverlessfirst.com/feed.xml blog tech
 https://thebootstrappedfounder.com/feed/ blog tech
 https://aswathdamodaran.blogspot.com/feeds/posts/default blog finance
 https://gbracha.blogspot.com/feeds/posts/default "~Gilad Bracha's blog" blog tech
-https://anchor.fm/s/1bec0d90/podcast/rss podcast business
-https://lukesmith.xyz/lindy.xml books
 http://www.wirfs-brock.com/allen/feed tech blog
 https://0fps.net/feed/ tech blog
 https://di.nmfay.com/atom.xml tech blog
 https://roiss.substack.com/feed finance blog
-https://investor.fb.com/rss/SECFiling.aspx?Exchange=CIK&Symbol=0001326801 finance reports
-https://investor.fb.com/rss/PressRelease.aspx?LanguageId=1&CategoryWorkflowId=00000000-0000-0000-0000-000000000000&tags= finance
 https://startingstrength.com/rss.rss blog
 https://blog.plover.com/index.rss blog tech
+https://www.geoffreylitt.com/feed.xml blog tech
+https://staltz.com/feed.xml "~André Staltz" blog tech
+
+---News---
+https://www.economist.com/the-world-this-week/rss.xml news economist
+https://www.economist.com/leaders/rss.xml news economist
+https://www.economist.com/briefing/rss.xml news economist
+https://www.economist.com/special-report/rss.xml news economist
+https://www.economist.com/britain/rss.xml news economist
+https://www.economist.com/europe/rss.xml news economist
+https://www.economist.com/united-states/rss.xml news economist
+https://www.economist.com/the-americas/rss.xml news economist
+https://www.economist.com/middle-east-and-africa/rss.xml news economist
+https://www.economist.com/asia/rss.xml news economist
+https://www.economist.com/china/rss.xml news economist
+https://www.economist.com/international/rss.xml news economist
+https://www.economist.com/business/rss.xml news economist
+https://www.economist.com/finance-and-economics/rss.xml news economist
+https://www.economist.com/science-and-technology/rss.xml news economist
+https://www.economist.com/books-and-arts/rss.xml news economist
+https://www.economist.com/obituary/rss.xml news economist
+https://www.economist.com/graphic-detail/rss.xml news economist
+
+---Podcasts---
+https://anchor.fm/s/1bec0d90/podcast/rss podcast business
+https://feeds.soundcloud.com/users/soundcloud:users:239787249/sounds.rss podcast tech
+https://www.functionalgeekery.com/feed/mp3/ podcast tech
+http://feeds.feedburner.com/se-radio podcast tech
+https://grantpub.libsyn.com/rss podcast finance
+
+
+---Youtube---
+https://lukesmith.xyz/youtube.xml youtube "~Luke Smith (YouTube)" tech
+
+
+---Other---
+https://lukesmith.xyz/lindy.xml books
+
+---Company-Updates---
+https://investor.fb.com/rss/SECFiling.aspx?Exchange=CIK&Symbol=0001326801 finance reports
+https://investor.fb.com/rss/PressRelease.aspx?LanguageId=1&CategoryWorkflowId=00000000-0000-0000-0000-000000000000&tags= finance
+
