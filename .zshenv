@@ -1,4 +1,7 @@
 # set environment variables here
+# Note that some environment variables may need to be set in .zshrc in order to
+# override the values that oh-my-zsh sets for them. 
+# HISTSIZE and SAVEHIST are examples of this.
 
 PATH=$HOME/bin:$PATH
 PATH=$PATH:$HOME/.emacs.d/bin
@@ -25,10 +28,5 @@ export ZSH="/Users/evan/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-HISTSIZE=10000000 # maximum number of lines that are kept in a session
-SAVEHIST=1000000000 # maximum number of lines that are kept in the history file
-
-# disabling aws prompt because starship prompt will show it, and I don't need it shown twice
-SHOW_AWS_PROMPT=false
 
 export TIDDLYWIKI_PLUGIN_PATH=~/.config/tiddlywiki

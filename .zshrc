@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # uncomment this to enable profiling. You will also need to uncomment "zprof" at the bottom of the file
 #zmodload zsh/zprof
 
@@ -8,6 +15,13 @@
 plugins=(git fd fasd ripgrep kubectl)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.config/zsh/nnn.zsh
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+SAVEHIST=1000000000 # maximum number of lines that are kept in the history file
+HISTSIZE=10000000 # maximum number of lines that are kept in a session
 
 # Shortcuts
 alias mkd="mkdir -pv"
@@ -28,8 +42,15 @@ alias fzfp="fzf --preview 'bat --color=always --style=numbers --line-range=:500 
 alias rss="newsboat"
 alias edrss="vim ~/.config/newsboat/urls"
 alias edchain="vim ~/Dropbox/dont-break-the-chain/chain.txt"
-alias ytmp3="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s'"
+alias youtube-dl="python3 /usr/local/bin/youtube-dl"
+#alias ytmp3="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s'"
+alias ytmp3="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s'"
+alias ytmp4="yt-dlp -f 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b'"
 alias man="batman" # colorized man pages via bat
+alias datemdy="date +%m/%d/%Y" # the name is a short for "date - month day year", which prints date in "month/day/year" format
+# start and stop wireguard vpn client
+alias vpn-start="wg-quick up myvpn"
+alias vpn-stop="wg-quick down myvpn"
 
 # Better defaults
 alias mv="mv -iv"           # -i prompts before overwrite, v shows files that were moved
@@ -147,6 +168,17 @@ rga-fzf() {
 }
 
 
+
+makemono() {
+    # convert video file from stereo to mono by discarding left channel and using audio from right channel. 
+    # QuickTime records all audio onto right channel. If you wanted to use audio from left channel, replace FR with FL.
+
+    INPUT=$1
+    OUTPUT=mono.$INPUT
+
+    ffmpeg -i $INPUT -af "pan=mono|c0=FR" $OUTPUT 
+}
+
 # kubernetes and/or croquet work stuff
 # show logs of pods, easily select pod via fzf
 # Usage: pass in a cluster name. Example: podlogs devusor
@@ -173,7 +205,7 @@ podlogs() {
 }
 
 # starship prompt
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
 # completions
 # gcloud
@@ -189,3 +221,6 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
