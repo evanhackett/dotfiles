@@ -24,6 +24,7 @@ SAVEHIST=1000000000 # maximum number of lines that are kept in the history file
 HISTSIZE=10000000 # maximum number of lines that are kept in a session
 
 # Shortcuts
+alias c="bat -p"
 alias mkd="mkdir -pv"
 alias vi="nvim"
 alias vim="nvim"
