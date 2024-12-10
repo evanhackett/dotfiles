@@ -33,20 +33,21 @@ alias mkd="mkdir -pv"
 alias vi="nvim"
 alias vim="nvim"
 alias emacs="emacsclient -c -n"
-alias e="emacs"
+alias e="sublime -n"
 alias srcz="source ~/.zshrc"
-alias edz="vim ~/.zshrc"
-alias edv="vim ~/.config/nvim/init.vim"
+alias edz="e ~/.zshrc"
+alias edv="e ~/.config/nvim/init.vim"
 alias gd="git diff -- . ':(exclude)*package-lock.json' -- . ':(exclude)*yarn.lock'"
 alias gds='git diff --staged'
 alias path="print -l $path"
-alias scratch="vim ~/Dropbox/notes/scratch.txt"
+alias scratch="e ~/Dropbox/notes/scratch.txt"
 alias synth="fluidsynth -s -a coreaudio -m coremidi ~/dev/haskell/HSoM/FluidR3_GM.sf2"
 alias py="python3"
 alias fzfp="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias rss="newsboat"
-alias edrss="vim ~/.config/newsboat/urls"
-alias edchain="vim ~/Dropbox/dont-break-the-chain/chain.txt"
+alias edrss="e ~/.config/newsboat/urls"
+alias edchain="e ~/Dropbox/dont-break-the-chain/chain2.txt"
+alias edespanso="e ~/Library/Application\ Support/espanso/match/base.yml"
 alias youtube-dl="python3 /usr/local/bin/youtube-dl"
 #alias ytmp3="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s'"
 alias ytmp3="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s'"
@@ -56,6 +57,7 @@ alias datemdy="date +%m/%d/%Y" # the name is a short for "date - month day year"
 # start and stop wireguard vpn client
 alias vpn-start="wg-quick up myvpn"
 alias vpn-stop="wg-quick down myvpn"
+
 
 # Better defaults
 alias mv="mv -iv"           # -i prompts before overwrite, v shows files that were moved
@@ -74,7 +76,7 @@ del () {
 
 emptytrash() {
    rm -rf /tmp/Trash
-   mkdir /tmp/Trash  
+   mkdir /tmp/Trash
 }
 
 
