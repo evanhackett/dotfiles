@@ -87,7 +87,7 @@ alias download-audio="~/scripts/youtube-dl-private-playlist/download-audio.sh"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # ls replacement
-alias l="exa"
+alias l="eza"
 alias la="l -a"
 alias lx="l --long --header --git"
 alias ll="lx --links"
@@ -103,7 +103,7 @@ alias starship-default="export STARSHIP_CONFIG=~/.config/starship.toml"
 # named directories
 export WONDERLAND=~/dev/croquet/wonderland
 
-# fasd 
+# fasd
 # init
 eval "$(fasd --init auto)"
 alias j='z' # jump to dir
@@ -126,7 +126,7 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # edit the current line with vim by pressing ctrl-e
 autoload -U edit-command-line
-zle -N edit-command-line 
+zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # use lf to change directories
@@ -177,13 +177,13 @@ rga-fzf() {
 
 
 makemono() {
-    # convert video file from stereo to mono by discarding left channel and using audio from right channel. 
+    # convert video file from stereo to mono by discarding left channel and using audio from right channel.
     # QuickTime records all audio onto right channel. If you wanted to use audio from left channel, replace FR with FL.
 
     INPUT=$1
     OUTPUT=mono.$INPUT
 
-    ffmpeg -i $INPUT -af "pan=mono|c0=FR" $OUTPUT 
+    ffmpeg -i $INPUT -af "pan=mono|c0=FR" $OUTPUT
 }
 
 # kubernetes and/or croquet work stuff
@@ -211,8 +211,66 @@ podlogs() {
     kubectl $CLUSTER logs $POD -c $CONTAINER
 }
 
-# starship prompt
-#eval "$(starship init zsh)"
+# make new executable shell script from template
+newscript() {
+    cp ~/scripts/newscript/template.sh $1
+}
+
+# make new html project from template
+newhtml() {
+    cp -r ~/scripts/newhtml/template $1
+}
+
+# download video from kaltura (see https://stackoverflow.com/questions/56366523/obtaining-direct-download-link-for-an-embedded-kaltura-video)
+kaltura_dl() {
+    echo $1 | sed 's/\scf\/hls/\pd/' | xargs -L 1 curl -o "$2.mp4" -L
+}
+
+# renames the current directory
+rename_current_dir() {
+    # Get the current directory name
+    local current_dir=${PWD:t}
+
+    # Get the new directory name from the first argument
+    local new_dir="$1"
+
+    # Check if a new directory name is provided
+    if [[ -z "$new_dir" ]]; then
+        echo "Usage: rename_current_dir new_directory_name"
+        return 1
+    fi
+
+    # Move up to the parent directory
+    cd ..
+
+    # Rename the current directory
+    mv $current_dir $new_dir
+
+    # Check if the renaming was successful
+    if [[ $? -eq 0 ]]; then
+        echo "Current directory renamed to $new_dir"
+        cd $new_dir
+    else
+        echo "Failed to rename current directory"
+    fi
+}
+
+# download transcript of a youtube video, without timestamps
+yt_transcript() {
+    local url=$1
+    local timestamp=$(date +%s)
+    mkdir -p /tmp/yt_transcript
+    yt-dlp --skip-download --write-subs --write-auto-subs --sub-lang en --sub-format ttml --convert-subs srt --output "/tmp/yt_transcript/transcript-$timestamp.%(ext)s" $url
+    cat /tmp/yt_transcript/transcript-$timestamp.en.srt | sed '/^$/d' | grep -v '^[0-9]*$' | grep -v '\-->' | sed 's/<[^>]*>//g' | tr '\n' ' '
+}
+
+# print current directory with spaces escaped (useful for copy/pasting)
+# pro tip: pwd-escaped | pbcopy
+pwd-escaped() {
+  pwd | sed 's/ /\\ /g'
+}
+
+
 
 # completions
 # gcloud
