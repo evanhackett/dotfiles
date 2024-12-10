@@ -1,6 +1,6 @@
 # set environment variables here
 # Note that some environment variables may need to be set in .zshrc in order to
-# override the values that oh-my-zsh sets for them. 
+# override the values that oh-my-zsh sets for them.
 # HISTSIZE and SAVEHIST are examples of this.
 
 PATH=$HOME/bin:$PATH
@@ -13,7 +13,7 @@ PATH=$PATH:$HOME/dev/croquet/wonderland-copies/dev-deploy/docker/scripts
 
 export PATH
 
-export EDITOR=/opt/homebrew/bin/nvim
+export EDITOR=/usr/local/bin/code
 
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -30,3 +30,12 @@ ZSH_THEME="robbyrussell"
 
 
 export TIDDLYWIKI_PLUGIN_PATH=~/.config/tiddlywiki
+
+# JavaFX. See [[Getting Started with JavaFX|https://openjfx.io/openjfx-docs/#install-javafx]]
+export PATH_TO_FX=/Users/evan/dev/javafx-sdk-23.0.1/lib
+
+# Java Home. See [[Set JAVA_HOME|https://www.baeldung.com/java-home-on-windows-mac-os-x-linux]]
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# CSCI dir - for quickly accessing hw and class files
+export CSCI=/Users/evan/Desktop/School/CSCI\ 709\ Programming\ High\ Level\ Lang
