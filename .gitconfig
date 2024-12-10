@@ -11,7 +11,7 @@
     ui = auto
 
 [core]
-	editor = nvim
+	editor = sublime -n -w
     excludesfile = ~/.gitignore_global
     pager = delta
 
