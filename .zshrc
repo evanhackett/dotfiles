@@ -23,6 +23,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 SAVEHIST=1000000000 # maximum number of lines that are kept in the history file
 HISTSIZE=10000000 # maximum number of lines that are kept in a session
 
+# prevent io redirection from overwriting existing files.
+# if you actually want to overwrite the file, use ">|" instead of ">"
+set -o noclobber
+
 # Shortcuts
 alias c="bat -p"
 alias mkd="mkdir -pv"
