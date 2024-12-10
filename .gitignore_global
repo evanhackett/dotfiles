@@ -8,3 +8,10 @@ node_modules
 
 # Folder view configuration files
 .DS_Store
+
+
+# Croquet stuff
+kubectl-evan*
+evan*-lb-urlmap.yaml
+test-sign-croquet*dev*
+test-sign-invalid-url.sh
