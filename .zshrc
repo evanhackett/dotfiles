@@ -12,7 +12,7 @@ fi
 
 # aliases, functions, and interactive-only stuff are defined here in .zshrc.
 
-plugins=(git fd fasd ripgrep kubectl)
+plugins=(git fasd kubectl)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.config/zsh/nnn.zsh
