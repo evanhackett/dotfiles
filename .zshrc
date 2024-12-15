@@ -12,7 +12,7 @@ fi
 
 # aliases, functions, and interactive-only stuff are defined here in .zshrc.
 
-plugins=(git fasd kubectl)
+plugins=(git fasd)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.config/zsh/nnn.zsh
@@ -95,16 +95,8 @@ alias lafg="lx -a --grid"
 alias ldot="lx -d .*"
 alias tree="l --tree"
 
-# switch starship configs
-alias starship-aws="export STARSHIP_CONFIG=~/.config/starship_aws.toml"
-alias starship-default="export STARSHIP_CONFIG=~/.config/starship.toml"
-
-
-# named directories
-export WONDERLAND=~/dev/croquet/wonderland
 
 # fasd
-# init
 eval "$(fasd --init auto)"
 alias j='z' # jump to dir
 alias ji='zz' # jump interactive
