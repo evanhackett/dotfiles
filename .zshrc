@@ -27,6 +27,9 @@ HISTSIZE=10000000 # maximum number of lines that are kept in a session
 # if you actually want to overwrite the file, use ">|" instead of ">"
 set -o noclobber
 
+# run this now because I will overwrite keybindings later
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Shortcuts
 alias c="bat -p"
 alias mkd="mkdir -pv"
@@ -120,6 +123,12 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+# open prompt for executing widgets
+bindkey '^x' execute-named-cmd # x for "execute"
+
+# rebind fzf-history-widget (default was ctrl-r)
+bindkey '^h' fzf-history-widget # h for "history"
 
 # use lf to change directories
 lfcd () {
@@ -263,21 +272,49 @@ pwd-escaped() {
 }
 
 
+# Set the global COMMANDS_FILE variable
+set_commands_file() {
+  local file=$1
+  if [[ -f $file ]]; then
+    COMMANDS_FILE=$file
+    echo "Command file set to: $COMMANDS_FILE"
+  else
+    echo "Error: File '$file' does not exist." >&2
+  fi
+}
+
+# Interactively search for commands from the set file and replace prompt
+commands() {
+  # Check if the COMMANDS_FILE is set and valid
+  if [[ -z $COMMANDS_FILE || ! -f $COMMANDS_FILE ]]; then
+    echo "Error: COMMANDS_FILE is not set or invalid. Run \"set_commands_file\" first." >&2
+    return 1
+  fi
+
+  # Use fzf to pick a command from the file
+  command=$(cat "$COMMANDS_FILE" | fzf)
+  if [[ -n $command ]]; then
+    LBUFFER="$command"  # Set the prompt buffer with the selected command
+    zle redisplay       # Refresh the prompt
+  fi
+}
+
+# Register the widget
+zle -N commands
+bindkey '^r' commands # r for "run"
+
+
 
 # completions
-# gcloud
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+autoload -U +X bashcompinit && bashcompinit
 
-# Uncomment this (along with the corresponding line at the top of the file) to enable profiling
-#zprof
-
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# add java to path
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# Uncomment this (along with the corresponding line at the top of the file) to enable profiling
+#zprof
