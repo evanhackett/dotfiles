@@ -112,6 +112,20 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 
+# help command, see https://wiki.archlinux.org/title/Zsh#Help_command
+HELPDIR="/usr/share/zsh/$(zsh --version | cut -d' ' -f2)/help"
+autoload -Uz run-help
+(( ${+aliases[run-help]} )) && unalias run-help
+alias help=run-help
+autoload run−help−git
+autoload run−help−ip
+autoload run−help−openssl
+autoload run−help−p4
+autoload run−help−sudo
+autoload run−help−svk
+autoload run−help−svn
+
+
 # fuzzy search history
 # awk and cut remove first column (was tricky due to the column format). sort and uniq remove duplicate noise, fzf for searching.
 # Update: although this is cool, pressing Ctrl+R does the same thing but even better because it will replace your prompt with the selection instead of printing it out.
