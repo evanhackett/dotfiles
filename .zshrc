@@ -99,6 +99,12 @@ alias lafg="lx -a --grid"
 alias ldot="lx -d .*"
 alias tree="l --tree"
 
+# Directory shortcuts
+hash -d school=$HOME/Desktop/School
+#hash -d csci=$HOME/Desktop/School/CSCI... todo, make this for next term's csci class
+hash -d dbox=$HOME/Dropbox
+hash -d dev=$HOME/dev
+hash -d scratch=$HOME/dev/scratch
 
 # fasd
 eval "$(fasd --init auto)"
