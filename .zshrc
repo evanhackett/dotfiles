@@ -67,6 +67,7 @@ alias mv="mv -iv"           # -i prompts before overwrite, v shows files that we
 alias cp='cp -i'
 alias mkdir="mkdir -p"     # -p make parent dirs as needed
 alias df="df -h"           # -h prints human readable format
+alias rs="rsync -avzP"
 #alias rm="rm -iv" # commenting this out for now since I prefer grm since it supports -I
 #alias rm="/opt/homebrew/bin/grm -Iv" # commenting this out now as well in favor of safe-rm
 alias rm="safe-rm -iv"
